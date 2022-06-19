@@ -1,0 +1,19 @@
+$color-primary: #FFE600;
+$color-info: #3483FA;
+$color-secondary-4: #333333;
+$color-secondary-3: #666666;
+$color-secondary-2: #999999;
+$color-secondary-1: #EEEEEE;
+
+
+@mixin tablet {
+    @media only screen and (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: 992px) {
+        @content;
+    }
+}

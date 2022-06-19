@@ -1,0 +1,45 @@
+@use "../../styles/mixin.scss" as mixin;
+
+.autocompleteWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+}
+
+::placeholder {
+    color: mixin.$color-secondary-2;
+}
+
+.navInputSearch{
+    box-sizing: border-box;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 60vw;
+    height: 30px;
+    border: none;
+    &:focus {
+           outline: none;
+        }
+}
+
+
+.searchButton{
+    box-sizing: border-box;
+    border: none;
+    width: 35px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navIconSearch{
+    background-image: url(../../assets/images/ic_Search@2x.png.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+    width: 25px;
+    height: 25px;
+}

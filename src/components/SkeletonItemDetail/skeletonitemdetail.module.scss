@@ -1,0 +1,88 @@
+@use "../../styles/mixin.scss" as mixin;
+
+.itemDetailmainSection {
+    background-color: white;
+    display: flex;
+}
+
+.itemDescriptionContainer {
+    background-color: white;
+    padding: mixin.$gap-32;
+}
+
+.imageContainer {
+    width: 70%; 
+    height: 100%;
+    padding: mixin.$gap-32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textContainer {
+    padding-top: mixin.$gap-32;
+    padding-right: mixin.$gap-32;
+    width: 30%;
+}
+
+.itemImage {
+    width: 680px;
+    height: 100%;
+    background-color: mixin.$color-secondary-1;
+    aspect-ratio: auto 180 / 180;
+    border-radius: 15px;
+
+}
+
+.itemConditionContainer {
+    background-color: mixin.$color-secondary-1;
+    width: 120px;
+    height: mixin.$font-size-14;
+    border-radius: 10px;
+}
+
+.itemTitle {
+    margin: 0;
+    margin-top: mixin.$gap-16;
+    background-color: mixin.$color-secondary-1;
+    width: 100%;
+    height: mixin.$font-size-24;
+    border-radius: 10px;
+}
+
+.itemPrice {
+    margin: mixin.$gap-32 0;
+    background-color: mixin.$color-secondary-1;
+    width: 150px;
+    height: mixin.$font-size-46;
+    border-radius: 10px;
+}
+
+.buyButton {
+    margin-right: 32px;
+    width: 100%;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 15px;;
+    text-align: center;
+    background-color: mixin.$color-secondary-1;
+    border-color: transparent;
+
+}
+
+.itemDescriptionTitle {
+    margin: 0;
+    background-color: mixin.$color-secondary-1;
+    width: 150px;
+    height: mixin.$font-size-28;
+    border-radius: 10px;
+}
+
+.itemDescriptionContent {
+    margin-bottom: 0;
+    background-color: mixin.$color-secondary-1;
+    width: 70%;
+    height: mixin.$font-size-16;
+    border-radius: 10px;
+}

@@ -1,19 +1,22 @@
 import { getCurrencyStringFromNumber } from 'helpers/stringHelpers';
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "./listitem.module.scss";
 import { useNavigate } from "react-router-dom";
+import { LoadingContext } from 'contexts/LoadingContext';
 
 const ITEMS_URL_FRAGMENT = "/items/";
 
 export const ListItem = ({itemData}) => {
 const {id, title, price, picture, condition, free_shipping: freeShipping, location} = itemData;
 const {amount, decimals} = price;
-  const navigate = useNavigate();
+const { contentIsLoading } = useContext(LoadingContext);
+const navigate = useNavigate();
 
 const handleOnClick = () => {
        navigate(
          ITEMS_URL_FRAGMENT + id
        );
+       contentIsLoading();
 }
   return (
     <li className={styles.cardContainer}>

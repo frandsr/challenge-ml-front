@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: mixin.$color-secondary-1;
+  background-color: #f5f4f4;
 }
 
 ul {
@@ -16,7 +16,6 @@ ul {
 }
 
 .container{
-  background-color: #eee;
   padding: 0 10%;
   min-height: 80vh;
 }

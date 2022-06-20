@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./autocomplete.module.scss";
 import { useNavigate } from "react-router-dom";
 import {getSearchParamsURlFromString} from '../../helpers/routingHelpers'
+import { LoadingContext } from "contexts/LoadingContext";
 
 const ITEMS_URL_FRAGMENT = "/items?";
 
 const AutoComplete = ({ suggestions }) => {
   const [searchBoxValue, setSearchBoxValue] = useState("");
+  const { contentIsLoading } = useContext(LoadingContext);
   const searchBoxRef = useRef();
   const navigate = useNavigate();
 
@@ -20,12 +22,11 @@ const AutoComplete = ({ suggestions }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let URL = ITEMS_URL_FRAGMENT + getSearchParamsURlFromString(searchBoxValue);
-    console.log("URL: ", URL);
      navigate(
        ITEMS_URL_FRAGMENT + getSearchParamsURlFromString(searchBoxValue)
      );
-     setSearchBoxValue("");
+    contentIsLoading();
+    setSearchBoxValue("");
   };
 
   useEffect(() => {

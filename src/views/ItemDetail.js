@@ -1,4 +1,10 @@
-import { capitalizeString, getCurrencyStringFromNumber, replaceBreakingSpaces, translateCondition } from "helpers/stringHelpers";
+import { Breadcrumb } from "components/Breadcrumb/Breadcrumb";
+import {
+  capitalizeString,
+  getCurrencyStringFromNumber,
+  replaceBreakingSpaces,
+  translateCondition
+} from "helpers/stringHelpers";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../styles/itemdetail.module.scss";
@@ -6,23 +12,28 @@ import styles from "../styles/itemdetail.module.scss";
 const BASE_SERVER_ITEMS_URL = "http://localhost:8080/api/items/";
 
 export const ItemDetail = () => {
-   let {id} = useParams();
-    const [item, setItem] = useState({});
-    const itemDescription = useRef()
+  let { id } = useParams();
+  const [item, setItem] = useState({});
+  const [categoriesPath, setCategoriesPath] = useState();
 
-     useEffect(() => {
-       fetch(BASE_SERVER_ITEMS_URL + id)
-         .then((response) => response.json())
-         .then((data) => {
-          setItem(data.item)
-          itemDescription.current.innerHTML =
-            replaceBreakingSpaces(data.item.description);
-        });
-     }, [id]);
+  const itemDescription = useRef();
+
+  useEffect(() => {
+    fetch(BASE_SERVER_ITEMS_URL + id)
+      .then((response) => response.json())
+      .then((data) => {
+        setItem(data.item);
+        setCategoriesPath(data.category_path);
+        itemDescription.current.innerHTML = replaceBreakingSpaces(
+          data.item.description
+        );
+      });
+  }, [id]);
 
   return (
     <>
       <div className="container">
+        {categoriesPath && <Breadcrumb categoryPath={categoriesPath} />}
         <div className={styles.itemDetailmainSection}>
           <div className={styles.imageContainer}>
             <img src={item.picture} alt="item" className={styles.itemImage} />
@@ -37,10 +48,11 @@ export const ItemDetail = () => {
             </div>
             <h3 className={styles.itemTitle}>{item.title}</h3>
             <p className={styles.itemPrice}>
-              {item.price && getCurrencyStringFromNumber(
-                item.price.amount,
-                item.price.decimals
-              )}
+              {item.price &&
+                getCurrencyStringFromNumber(
+                  item.price.amount,
+                  item.price.decimals
+                )}
             </p>
             <button className={styles.buyButton}> Comprar </button>
           </div>
@@ -49,7 +61,10 @@ export const ItemDetail = () => {
           <h3 className={styles.itemDescriptionTitle}>
             Descripción del producto
           </h3>
-         <p ref={itemDescription} className={styles.itemDescriptionContent}></p>
+          <p
+            ref={itemDescription}
+            className={styles.itemDescriptionContent}
+          ></p>
         </div>
       </div>
     </>

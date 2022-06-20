@@ -1,0 +1,20 @@
+@use "./styles/mixin.scss" as mixin;
+
+.categoryPathContainer {
+    background-color: inherit;
+    color: mixin.$color-secondary-2;
+    padding: 0;
+}
+
+.categoryPathItem {
+    display: inline-block;
+
+    &:not(:last-child):after{
+        content: ">";
+        padding: 0 10px;
+    }
+    &:last-child {
+        font-weight: 600;
+    }
+    
+}

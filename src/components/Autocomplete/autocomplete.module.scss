@@ -5,11 +5,57 @@
     justify-content: center;
     align-items: center;
     align-items: center;
+    position: relative;
 }
 
 ::placeholder {
     color: mixin.$color-secondary-2;
     font-size: 14px;
+}
+
+.suggestionList {
+    position: absolute;
+    top: 35px;
+    border: 1px solid #eee;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.activeSuggestion{
+    background-color: mixin.$color-secondary-1;
+    padding: 10px;
+    padding-left: 50px;
+    position: relative;
+    &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        left: 1em;
+        top: 0.5em;
+        background-size: cover;
+        width: 18px;
+        height: 18px;
+        background-image: url(../../assets/images/historial.svg);
+    }
+}
+
+.inactiveSuggestion {
+    padding: 10px;
+    padding-left: 50px;
+    position: relative;
+    &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 1em;
+            top: 0.5em;
+            background-size: cover;
+            width: 18px;
+            height: 18px;
+            background-image: url(../../assets/images/historial.svg);
+        }
 }
 
 .navInputSearch{

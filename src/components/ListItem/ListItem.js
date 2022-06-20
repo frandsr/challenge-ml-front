@@ -1,4 +1,4 @@
-import { getCurrencyStringFromNumber } from 'helpers/stringHelpers';
+import { capitalizeString, getCurrencyStringFromNumber, translateCondition } from 'helpers/stringHelpers';
 import React, { useContext } from 'react'
 import styles from "./listitem.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,9 @@ const handleOnClick = () => {
         <h3 className={styles.itemTitle} onClick={handleOnClick}>
           {title}
         </h3>
-        <p className={styles.itemCondition}>{condition}</p>
+        <p className={styles.itemCondition}>
+          {capitalizeString(translateCondition(condition))}
+        </p>
       </div>
       <div className={styles.cardLocation}>{location}</div>
     </li>

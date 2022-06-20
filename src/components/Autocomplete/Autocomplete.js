@@ -1,26 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./autocomplete.module.scss";
+import { useNavigate } from "react-router-dom";
+import {getSearchParamsURlFromString} from '../../helpers/routingHelpers'
+
+const ITEMS_URL_FRAGMENT = "/items?";
 
 const AutoComplete = ({ suggestions }) => {
   const [searchBoxValue, setSearchBoxValue] = useState("");
   const searchBoxRef = useRef();
+  const navigate = useNavigate();
 
   const handleInputOnChange = (e) => {
     setSearchBoxValue(e.target.value);
-    console.log(searchBoxValue);
   }  
 
    const handleInputOnKeyDown = (e) => {
-     console.log(e.keyCode);
-     if (e.keyCode === (27)  || e.keyCode === (13)) setSearchBoxValue("");
+     if (e.keyCode === (27)) setSearchBoxValue("");
    };  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    let URL = ITEMS_URL_FRAGMENT + getSearchParamsURlFromString(searchBoxValue);
+    console.log("URL: ", URL);
+     navigate(
+       ITEMS_URL_FRAGMENT + getSearchParamsURlFromString(searchBoxValue)
+     );
+     setSearchBoxValue("");
   };
 
   useEffect(() => {
+    setSearchBoxValue("");
     searchBoxRef.current.focus();
   }, [])
   

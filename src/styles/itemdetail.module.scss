@@ -1,0 +1,74 @@
+@use "./styles/mixin.scss" as mixin;
+
+.itemDetailmainSection{
+    background-color: white;
+    display: flex;
+}
+
+.itemDescriptionContainer {
+    background-color: white;
+    padding: mixin.$gap-32;
+}
+
+.imageContainer {
+    box-sizing: border-box;
+    width: 70%;
+    padding: mixin.$gap-32;
+}
+
+.textContainer {
+    padding-top: mixin.$gap-32;
+    padding-right: mixin.$gap-32;
+    width: 30%;
+}
+
+.itemImage {
+    width: 680px;
+    height: 100%;
+    object-fit: contain;
+    
+}
+
+.itemConditionContainer{
+    font-size: mixin.$font-size-14;
+}
+
+.itemTitle{
+    margin: 0;
+    margin-top: mixin.$gap-16;
+    font-size: mixin.$font-size-24;
+}
+
+.itemPrice{
+    margin: mixin.$gap-32 0;
+    font-size: mixin.$font-size-46;
+}
+
+.buyButton{
+    margin-right: 32px;
+    width: 100%;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #3483fa;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.itemDescriptionTitle{
+    margin: 0;
+    font-size: mixin.$font-size-28;
+    font-weight: 400;
+}
+
+.itemDescriptionContent {
+    color: mixin.$color-secondary-3;
+    font-size: mixin.$font-size-16;
+    margin-top: mixin.$gap-32;
+    margin-bottom: 0;
+    max-width: 70%;
+}
+

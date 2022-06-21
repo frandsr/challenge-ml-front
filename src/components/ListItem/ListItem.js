@@ -31,7 +31,7 @@ const handleOnClick = () => {
       <div className={styles.cardDescription}>
         <div className={styles.priceContainer}>
           <span>{getCurrencyStringFromNumber(amount, decimals)}</span>
-          {freeShipping && <div className={styles.shippingLogo}></div>}
+          {freeShipping && <picture className={styles.shippingLogo}></picture>}
         </div>
 
         <h3 className={styles.itemTitle} onClick={handleOnClick}>

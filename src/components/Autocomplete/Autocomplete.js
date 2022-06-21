@@ -29,7 +29,7 @@ const AutoComplete = () => {
     if (filteredSuggestions[activeSuggestion]){
       setSearchBoxValue(filteredSuggestions[activeSuggestion]);
     }
-  }, [activeSuggestion]);
+  }, [activeSuggestion,filteredSuggestions]);
 
   useEffect(() => {
     if (suggestions && suggestions.length > 0) {

@@ -6,7 +6,7 @@ import styles from "./header.module.scss";
 export const Header = () => {
   return (
     <>
-      <header>
+      <header role={"heading"}>
         <div className={styles.headerWrapper}>
           <Link to="/" className={styles.navLogo}>
             Mercado Libre

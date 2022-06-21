@@ -1,37 +1,19 @@
 import { Breadcrumb } from "components/Breadcrumb/Breadcrumb";
 import { SkeletonItemDetail } from "components/SkeletonItemDetail/SkeletonItemDetail";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../styles/itemdetail.module.scss";
 import {
   capitalizeString,
   getCurrencyStringFromNumber,
-  replaceBreakingSpaces,
   translateCondition
 } from "helpers/stringHelpers";
-import { SkeletonBreadCrumb } from "components/SkeletonBreadCrumb/SkeletonBreadCrumb";
-
-const BASE_SERVER_ITEMS_URL = "http://localhost:8080/api/items/";
+import useFetchItemInfo from "hooks/useFetchItemInfo";
 
 export const ItemDetail = () => {
 let { id } = useParams();
-const [item, setItem] = useState();
-const [categoriesPath, setCategoriesPath] = useState();
 const itemDescriptionRef = useRef();
-
-  useEffect(() => {
-    fetch(BASE_SERVER_ITEMS_URL + id)
-      .then((response) => response.json())
-      .then((data) => {
-        setItem(data.item);
-        setCategoriesPath(data.category_path);          
-          if(itemDescriptionRef.current){
-            itemDescriptionRef.current.innerHTML = replaceBreakingSpaces(
-              data.item.description
-            );  
-          }    
-      });
-  }, [id]);
+const {item, categoriesPath} = useFetchItemInfo(id, itemDescriptionRef);
 
   return (
     <>
